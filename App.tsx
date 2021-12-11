@@ -25,6 +25,9 @@ import {
   Colors
 } from 'react-native/Libraries/NewAppScreen';
 import Input from './src/screens/Input'
+import UserList from './src/screens/Redux/UserList';
+import {Provider as ReduxProvider} from 'react-redux'
+import store from './src/Redux/store'
 
 
 
@@ -40,9 +43,13 @@ const App:FC = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
      <View>
 
-      <Fontisto name="search" size={25} />
-      <Input icon="search"  
-      onChangeText={(text)=>console.log(text)}/>
+       <ReduxProvider store={store}>
+    <UserList />
+    </ReduxProvider>
+      {/* <Fontisto name="search" size={25} /> */}
+      {/* <Input icon="search" placeholder="Search" 
+      // onChangeText={(text)=>console.log(text)}
+      /> */}
      </View>
 
     </SafeAreaView>
